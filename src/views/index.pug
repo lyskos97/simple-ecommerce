@@ -1,0 +1,15 @@
+doctype html
+html(lang="en")
+  head
+    include ./components/headDefaults
+    title Eshop
+  body
+    #app
+      include ./components/navbar
+      .ui.container
+        h1 Welcome to Eshop!
+        .ui.segment.basic 
+          h2.header Explore...
+          .ui.items
+            each product in products
+              include ./components/productCard

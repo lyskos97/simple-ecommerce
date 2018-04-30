@@ -1,0 +1,24 @@
+ui.container.fluid
+  .ui.menu.inverted
+    .ui.container
+      a.item(href="/") Home
+      .ui.item.dropdown.pointing.link
+        | Products
+        i.icon.dropdown
+        .menu
+          .header Categories
+          .item Laptops
+          .item Smartphones
+          .item Headphones
+      a.item About
+      .menu.right
+        if user
+          .item #{user.firstName} #{user.lastName}
+          a.item(href="/auth/logout") Log out
+        else  
+          a#register.item.link(href="/auth/register") Register
+          a#login.item.link(href="/auth/login") Log in
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js")
+script.
+  $('.ui.dropdown').dropdown();

@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+  head
+    include ./components/headDefaults
+    title Register
+  body
+    #app
+      include ./components/navbar
+      .ui.container
+        form.ui.form(action="/auth/register", method="POST")
+          .field
+          label First Name
+          input#firstName(type="text", name="firstName" placeholder="First Name")
+          .field
+          label Last Name
+          input#lastName(type="text", name="lastName" placeholder="Last Name")
+          .field
+          label Email
+          input#email(type="email", name="email" placeholder="Email")
+          .field
+          label Password
+          input#password(type="text", name="password" placeholder="Password")
+          button.ui.button(type="submit") Submit
