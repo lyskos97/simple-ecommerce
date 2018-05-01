@@ -1,7 +1,10 @@
 const express = require('express');
 const Product = require('../../models/product');
 const User = require('../../models/user');
-const { authenticate } = require('../../middlewares');
+
+const {
+  middlewares: { authenticate }
+} = require('../../utils');
 
 const router = express.Router();
 

@@ -5,7 +5,9 @@ const MongoStore = require('connect-mongo')(session);
 const path = require('path');
 
 const { secret } = require('../private/session');
-const { handleAuthError, authenticate } = require('./middlewares');
+const {
+  middlewares: { authenticate }
+} = require('./utils');
 
 const routes = require('./routes');
 
