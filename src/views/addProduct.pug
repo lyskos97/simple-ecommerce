@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+  head
+    include ./components/headDefaults
+    title Add Product
+  body
+    #app
+      include ./components/navbar
+      .ui.container
+        .ui.segment.aligned.center.padded.basic
+          h1.header Add Product
+          form.ui.form(action="/products/add", method="POST", enctype="multipart/form-data")
+            .field
+              label Title
+              input(type="text", name="title" placeholder="Title")
+            .field
+              label Description
+              textarea(name="description")
+            .field
+              label Photo
+              input(type="file", name="photo", accept="image/*")
+            button.ui.button(type="submit") Submit

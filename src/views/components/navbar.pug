@@ -11,6 +11,8 @@ ui.container.fluid
           .item Smartphones
           .item Headphones
       a.item(href="/about") About
+      if user
+        a.item(href="/products/add") Add product
       .menu.right
         if user
           .item #{user.firstName} #{user.lastName}
