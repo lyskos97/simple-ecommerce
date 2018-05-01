@@ -1,0 +1,12 @@
+doctype html
+html(lang="en")
+  head
+    include ./components/headDefaults
+    title #{product.title}
+  body
+    #app
+      include ./components/navbar
+      .ui.container
+        .ui.segment.basic.padded
+          .ui.header.huge #{product.title}
+        .ui.segment.basic

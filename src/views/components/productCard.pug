@@ -1,10 +1,13 @@
 .item
-  .image
-    img(src="https://semantic-ui.com/images/wireframe/image.png", alt="good")
+  a(href="/products/" + product.id)
+    .ui.image.small
+      img(src="https://semantic-ui.com/images/wireframe/image.png", alt="good")
   .content
-    .header #{product.title} Prod 1
-    .description
-      p #{product.description}
-    .extra
-      .ui.button.primary.floated.right Buy
-        i.icon.chevron.right
+    .ui.segment.padded.basic
+      .ui.header.meduim
+        a(href="/products/" + product.id) #{product.title}
+      .description
+        p #{product.description}
+      .extra
+        a.ui.button.primary.floated.right(href="/products/" + product.id) Buy
+          i.icon.chevron.right
