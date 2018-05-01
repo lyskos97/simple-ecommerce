@@ -6,7 +6,6 @@ module.exports = {
       if (req.session && req.session.userId) next();
       else {
         res.render('page404');
-        next(new Error('Not authorized'));
       }
     }
   },

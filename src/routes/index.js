@@ -34,7 +34,8 @@ router.get('/about', async (req, res) => {
   res.render('about', { user });
 });
 
-router.get('*', (req, res) => {
+router.get('*', (req, res, err) => {
+  console.log(err);
   res.status(404).render('page404');
 });
 
