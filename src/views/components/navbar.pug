@@ -1,8 +1,8 @@
 ui.container.fluid
-  .ui.menu.inverted
+  .ui.menu.inverted.large
     .ui.container
       a.item(href="/") Home
-      .ui.item.dropdown.pointing.link
+      a.ui.item.dropdown.pointing
         | Products
         i.icon.dropdown
         .menu
@@ -10,7 +10,7 @@ ui.container.fluid
           .item Laptops
           .item Smartphones
           .item Headphones
-      a.item About
+      a.item(href="/about") About
       .menu.right
         if user
           .item #{user.firstName} #{user.lastName}
@@ -21,4 +21,4 @@ ui.container.fluid
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js")
 script.
-  $('.ui.dropdown').dropdown();
+  $('.ui.dropdown').dropdown({ on: 'hover' });
