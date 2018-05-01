@@ -11,11 +11,12 @@
   "dependencies": {
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.2",
+    "cloudinary": "^1.11.0",
     "connect-mongo": "^2.0.1",
     "express": "^4.16.3",
     "express-jwt": "^5.3.1",
     "express-session": "^1.15.6",
-    "jsonwebtoken": "^8.2.1",
+    "formidable": "^1.2.1",
     "mongoose": "^5.0.16",
     "nodemon": "^1.17.3",
     "pug": "^2.0.3",
