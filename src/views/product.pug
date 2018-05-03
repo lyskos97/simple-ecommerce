@@ -9,13 +9,14 @@ html(lang="en")
       .ui.container
         .ui.segment.padded.basic
           .ui.header.large #{product.title}
-            if isInCart
-              a.ui.button.green.right.floated.disabled(href="/products/" + product.id + '/add_to_cart')
-                i.ui.icon.check
-                | Added to Cart
-            else
-              a.ui.button.green.right.floated(href="/products/" + product.id + '/add_to_cart') Add to Cart
-          - const defaultImg = "http://res.cloudinary.com/lyskos97/image/upload/c_scale,h_400,w_400/v1525178856/def.png"
+            if user
+              if isInCart
+                a.ui.button.green.right.floated.disabled(href="/products/" + product.id + '/add_to_cart')
+                  i.ui.icon.check
+                  | Added to Cart
+              else
+                a.ui.button.green.right.floated(href="/products/" + product.id + '/add_to_cart') Add to Cart
+            - const defaultImg = "http://res.cloudinary.com/lyskos97/image/upload/c_scale,h_400,w_400/v1525178856/def.png"
           .ui.image.small
             img(src=product.imageUrl ? product.imageUrl : defaultImg,
               alt="good")

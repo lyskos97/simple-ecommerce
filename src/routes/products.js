@@ -46,7 +46,7 @@ router.get('/:id', async (req, res) => {
     const product = await Product.findById(id);
     const user = await getUserFromSession(req, { full: true });
 
-    const isInCart = user.cart.find(p => {
+    const isInCart = user && user.cart && user.cart.find(p => {
       if (p.id === product.id) return true;
       return false;
     });
