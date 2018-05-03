@@ -1,7 +1,6 @@
 const mongooose = require('mongoose');
-const { connectionString } = require('../../private/db');
 
-mongooose.connect(connectionString);
+mongooose.connect(process.env.MONGODB_CONNECTION_STRING);
 const db = mongooose.connection;
 
 db.on('error', () => {
