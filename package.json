@@ -1,9 +1,12 @@
 {
-  "name": "server",
+  "name": "simple-ecommerce",
   "version": "1.0.0",
   "description": "Simple e-commerce shop",
   "main": "src/index.js",
   "author": "lyskos97@gmail.com",
+  "repository": {
+    "url": "git@github.com:lyskos97/simple-ecommerce.git"
+  },
   "license": "MIT",
   "scripts": {
     "start": "node src/index",
