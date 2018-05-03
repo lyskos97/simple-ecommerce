@@ -1,9 +1,11 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const favicon = require('serve-favicon');
 
-const { secret } = require('../private/session');
 const {
   middlewares: { authenticate }
 } = require('./utils');
@@ -22,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(
   session({
-    secret,
+    secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: false,
     store: new MongoStore({
