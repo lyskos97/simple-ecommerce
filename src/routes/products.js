@@ -25,18 +25,21 @@ router.get('/add', (req, res) => {
 
 router.post('/add', async (req, res) => {
   const form = new Formidable.IncomingForm();
+  try {
+    form.parse(req, async (err, fields, files) => {
+      const image = await cdn.upload(files.photo.path, { width: 400, height: 400, format: 'png' });
 
-  form.parse(req, async (err, fields, files) => {
-    const image = await cdn.upload(files.photo.path, { width: 400, height: 400, format: 'png' });
+      const newProduct = await Product.create({
+        title: fields.title,
+        description: fields.description,
+        imageUrl: image.url
+      });
 
-    const newProduct = await Product.create({
-      title: fields.title,
-      description: fields.description,
-      imageUrl: image.url
+      res.redirect('/');
     });
-  });
-
-  res.redirect('/');
+  } catch (e) {
+    throw new Error(e);
+  }
 });
 
 router.get('/:id', async (req, res) => {
@@ -46,10 +49,13 @@ router.get('/:id', async (req, res) => {
     const product = await Product.findById(id);
     const user = await getUserFromSession(req, { full: true });
 
-    const isInCart = user && user.cart && user.cart.find(p => {
-      if (p.id === product.id) return true;
-      return false;
-    });
+    const isInCart =
+      user &&
+      user.cart &&
+      user.cart.find(p => {
+        if (p.id === product.id) return true;
+        return false;
+      });
 
     res.render('product', {
       product: product ? product : null,

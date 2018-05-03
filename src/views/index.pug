@@ -10,5 +10,8 @@ html(lang="en")
         .ui.segment.basic.padded
           .ui.header.huge Welcome to Eshop!
           .ui.items.divided
-            each product in products
-              include ./components/productCard
+            if products
+              each product in products
+                include ./components/productCard
+            else
+              .ui.header There are no products yet, but you can them yourself
