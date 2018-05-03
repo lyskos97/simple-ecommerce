@@ -1,13 +1,15 @@
 .item
-  .ui.image.small
-    a(href="/products/" + product.id)
-      img(src=product.imageUrl ? product.imageUrl : "https://semantic-ui.com/images/wireframe/image.png",
-        alt="good")
+  a.ui.image.small(href="/products/" + product.id)
+    - const defaultImg = "http://res.cloudinary.com/lyskos97/image/upload/c_scale,h_400,w_400/v1525178856/def.png"
+    img(src=product.imageUrl ? product.imageUrl : defaultImg,
+      alt="good")
   .content.aligned.middle
     .header
       a(href="/products/" + product.id) #{product.title}
     .description
       span(style="white-space: pre-line") #{product.description}
     .extra
+      if user
+        a.ui.button.red.right.floated(href="/products/" + product.id + '/delete') Delete
       a.ui.button.primary.right.floated(href="/products/" + product.id) Buy
         i.icon.chevron.right

@@ -7,6 +7,17 @@ html(lang="en")
     #app
       include ./components/navbar
       .ui.container
-        .ui.segment.basic.padded
-          .ui.header.huge #{product.title}
-        .ui.segment.basic
+        .ui.segment.padded.basic
+          .ui.header.large #{product.title}
+            if isInCart
+              a.ui.button.green.right.floated.disabled(href="/products/" + product.id + '/add_to_cart')
+                i.ui.icon.check
+                | Added to Cart
+            else
+              a.ui.button.green.right.floated(href="/products/" + product.id + '/add_to_cart') Add to Cart
+          - const defaultImg = "http://res.cloudinary.com/lyskos97/image/upload/c_scale,h_400,w_400/v1525178856/def.png"
+          .ui.image.small
+            img(src=product.imageUrl ? product.imageUrl : defaultImg,
+              alt="good")
+          .ui.text.container
+            span(style="white-space: pre-line") #{product.description}

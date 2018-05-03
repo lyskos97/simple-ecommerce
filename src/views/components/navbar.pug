@@ -2,20 +2,14 @@ ui.container.fluid
   .ui.menu.inverted.large
     .ui.container
       a.item(href="/") Home
-      a.ui.item.dropdown.pointing
-        | Products
-        i.icon.dropdown
-        .menu
-          .header Categories
-          .item Laptops
-          .item Smartphones
-          .item Headphones
       a.item(href="/about") About
       if user
         a.item(href="/products/add") Add product
       .menu.right
         if user
-          .item #{user.firstName} #{user.lastName}
+          a.item(href="/profile")
+            i.icon.user.circle
+            | #{user.firstName} #{user.lastName}
           a.item(href="/auth/logout") Log out
         else  
           a#register.item.link(href="/auth/register") Register

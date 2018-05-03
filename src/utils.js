@@ -9,14 +9,20 @@ module.exports = {
       }
     }
   },
-  getUserFromSession: async req => {
+  getUserFromSession: async (req, params) => {
     if (req.session && req.session.userId) {
       const user = await User.findById(req.session.userId);
+      const { lastName, firstName, email } = user;
 
       if (user) {
-        const { lastName, firstName } = user;
-
-        return { lastName, firstName };
+        if (params && params.full) {
+          return {
+            lastName,
+            firstName,
+            email,
+            cart: await user.getCart()
+          };
+        } else return { lastName, firstName, email };
       } else {
         return null;
       }

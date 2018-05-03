@@ -23,8 +23,7 @@ const UserSchema = new mongoose.Schema(
       maxlength: 20
     },
     cart: {
-      type: [mongoose.Schema.Types.ObjectId],
-      default: []
+      type: [mongoose.Schema.Types.ObjectId]
     }
   },
   {
@@ -42,8 +41,15 @@ UserSchema.methods.validatePassword = function(rawPassword) {
   return compareSync(rawPassword, this.password);
 };
 
-UserSchema.methods.getCartProducts = async function() {
-  return Product.find({ id: { $in: this.cart } });
+UserSchema.methods.getCart = async function() {
+  return Product.find({ _id: { $in: this.cart } });
+};
+
+UserSchema.methods.addToCart = async function(id) {
+  if (this.cart.indexOf(id) > -1) throw new Error('Already added to cart');
+  else {
+    this.cart.push(id);
+  }
 };
 
 module.exports = mongoose.model('User', UserSchema);
