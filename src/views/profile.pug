@@ -1,0 +1,18 @@
+doctype html
+html(lang="en")
+  head
+    include ./components/headDefaults
+    title #{user.firstName} #{user.lastName}
+  body
+    #app
+      include ./components/navbar
+      .ui.container
+        .ui.segment.basic.padded
+          .ui.header.large.dividing
+            .content #{user.firstName} #{user.lastName}
+            .sub.header Cart
+          if user.cart
+            .ui.list.ordered
+              each product in user.cart
+                .item #{product.title}
+              

@@ -45,8 +45,6 @@ router.post('/login', async (req, res) => {
 
   const user = await User.findOne({ email });
 
-  console.log('login body', req.body);
-
   if (!user && !password) res.json({ message: 'No user with such email' });
   else {
     const valid = await user.validatePassword(password);

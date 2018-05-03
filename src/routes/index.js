@@ -1,7 +1,6 @@
 const express = require('express');
 
 const authRoutes = require('./auth');
-const apiRoutes = require('./api');
 const productRoutes = require('./products');
 
 const Product = require('../models/product');
@@ -15,7 +14,6 @@ const {
 const router = express.Router();
 
 router.use('/auth', authRoutes);
-router.use('/api', apiRoutes);
 router.use('/products', productRoutes);
 
 router.get('/', async (req, res) => {
@@ -34,8 +32,13 @@ router.get('/about', async (req, res) => {
   res.render('about', { user });
 });
 
+router.get('/profile', authenticate, async (req, res) => {
+  const user = await getUserFromSession(req, { full: true });
+
+  res.render('profile', { user });
+});
+
 router.get('*', (req, res, err) => {
-  console.log(err);
   res.status(404).render('page404');
 });
 
